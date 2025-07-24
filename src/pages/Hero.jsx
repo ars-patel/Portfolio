@@ -50,7 +50,7 @@ const Hero = () => {
       >
         {/* Background Image */}
         <div className="absolute top-0 left-0 z-10">
-          <img src="/images/bg.webp" alt="Background" loading="lazy" />
+          <img src="/images/bg.webp" alt="Background" fetchPriority="high"/>
         </div>
 
         {/* ⚡ Lightning */}
@@ -64,7 +64,7 @@ const Hero = () => {
               xOffset={1.05}
             />
           </Suspense>
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm"/>
         </div>
 
         {/* Gradient Overlay */}
