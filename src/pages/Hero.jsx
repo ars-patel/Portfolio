@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, lazy, Suspense } from "react";
+import { useEffect, useState, lazy, Suspense, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { roles } from "./../constant/store";
 
@@ -9,29 +9,38 @@ const AnimatedCounter = lazy(() => import("./AnimatedCounter"));
 
 const Hero = () => {
   const [index, setIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
   const [lightningIntensity, setLightningIntensity] = useState(0.12);
   const [lightningSpeed, setLightningSpeed] = useState(0.3);
+
+  const updateLightning = useCallback(() => {
+    const isMobile = window.innerWidth < 768;
+    setLightningIntensity(isMobile ? 0.5 : 0.12);
+    setLightningSpeed(isMobile ? 1.2 : 0.3);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % roles.length);
     }, 2500);
 
-    const updateLightning = () => {
-      const isMobile = window.innerWidth < 768;
-      setLightningIntensity(isMobile ? 0.4 : 0.12);
-      setLightningSpeed(isMobile ? 0.9 : 0.3);
+    // Debounce resize handler to improve performance
+    let debounceTimer;
+    const handleResize = () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        updateLightning();
+      }, 150);
     };
 
     updateLightning();
-    window.addEventListener("resize", updateLightning);
+    window.addEventListener("resize", handleResize);
 
     return () => {
       clearInterval(interval);
-      window.removeEventListener("resize", updateLightning);
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(debounceTimer);
     };
-  }, []);
+  }, [updateLightning]);
 
   return (
     <>
@@ -109,10 +118,6 @@ const Hero = () => {
               href="https://res.cloudinary.com/db8pzpi7i/image/upload/v1748517320/MY_RESUME/rwpnsjqxysdtkjchjse9.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => {
-                setIsLoading(true);
-                setTimeout(() => setIsLoading(false), 1500);
-              }}
               className="group inline-flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 border border-purple-500 hover:bg-purple-600 hover:text-white text-purple-400 text-sm sm:text-base rounded-lg transition duration-300"
             >
               <svg
