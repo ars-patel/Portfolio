@@ -17,7 +17,7 @@ const socialLinks = [
 
 const About = () => {
   return (
-    <section id="about" className="min-h-screen bg-black text-white relative pt-20">
+    <section id="about" className="min-h-screen bg-black text-white relative pt-25 pb-30">
       {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
