@@ -1,7 +1,7 @@
 import React from "react";
-import {footerLinks} from "./../constant/store"
+import { footerLinks } from "./../constant/store";
 
-// Isolated social links data
+const currentYear = new Date().getFullYear();
 
 const Footer = () => {
   return (
@@ -9,8 +9,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
         {/* Left: concise & professional */}
         <div className="text-white text-sm mb-3 md:mb-0 text-center md:text-left select-none tracking-wide">
-          © {new Date().getFullYear()} Ars Patel — Full Stack Developer driving
-          ideas from concept to code.
+          © {currentYear} Ars Patel — Full Stack Developer driving ideas from concept to code.
         </div>
 
         {/* Right: Social Icons */}

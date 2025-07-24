@@ -1,40 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Lightning from "../components/ui/Lightning";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import TopLoader from "./../components/ui/top-loader";
-import AnimatedCounter from "./AnimatedCounter";
 import { roles } from "./../constant/store";
+
+const Lightning = lazy(() => import("../components/ui/Lightning"));
+const AnimatedCounter = lazy(() => import("./AnimatedCounter"));
 
 const Hero = () => {
   const [index, setIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [manualProgress] = useState(0);
   const [lightningIntensity, setLightningIntensity] = useState(0.12);
   const [lightningSpeed, setLightningSpeed] = useState(0.3);
 
-  const useManualControl = false;
-  const color = "#8b5cf6";
-  const height = 3;
-  const speed = 300;
-  const showSpinner = true;
-  const trickle = true;
-
   useEffect(() => {
-    // Rotate roles every 2.5s
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % roles.length);
     }, 2500);
 
-    // Handle Lightning values on screen size
     const updateLightning = () => {
       const isMobile = window.innerWidth < 768;
       setLightningIntensity(isMobile ? 0.4 : 0.12);
       setLightningSpeed(isMobile ? 0.9 : 0.3);
     };
 
-    updateLightning(); // Initial run
+    updateLightning();
     window.addEventListener("resize", updateLightning);
 
     return () => {
@@ -47,22 +37,24 @@ const Hero = () => {
     <>
       <section
         id="hero"
-        className="relative overflow-hidden flex items-center justify-center h-[100vh] md:h-[100vh] px-4 sm:px-6 md:px-12 xl:px-20 bg-black pb-20"
+        className="relative overflow-hidden flex items-center justify-center h-[100vh] px-4 sm:px-6 md:px-12 xl:px-20 bg-black pb-20"
       >
         {/* Background Image */}
         <div className="absolute top-0 left-0 z-10">
-          <img src="/images/bg.webp" alt="" />
+          <img src="/images/bg.webp" alt="Background" loading="lazy" />
         </div>
 
-        {/* ⚡ Lightning Background */}
+        {/* ⚡ Lightning */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <Lightning
-            intensity={lightningIntensity}
-            hue={260}
-            speed={lightningSpeed}
-            size={0.6}
-            xOffset={1.05}
-          />
+          <Suspense fallback={null}>
+            <Lightning
+              intensity={lightningIntensity}
+              hue={260}
+              speed={lightningSpeed}
+              size={0.6}
+              xOffset={1.05}
+            />
+          </Suspense>
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
         </div>
 
@@ -80,17 +72,6 @@ const Hero = () => {
             }}
           />
         </div>
-
-        {/* Top Loader */}
-        <TopLoader
-          isLoading={isLoading}
-          progress={useManualControl ? manualProgress : undefined}
-          color={color}
-          height={height}
-          speed={speed}
-          showSpinner={showSpinner}
-          trickle={trickle}
-        />
 
         {/* Hero Content */}
         <div className="relative z-10 text-center max-w-2xl sm:max-w-3xl flex flex-col items-center space-y-4 sm:space-y-6 px-2">
@@ -153,9 +134,11 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* 🔢 Animated Counter */}
+      {/* 🔢 Animated Counter (only on large screens) */}
       <div className="hidden lg:block">
-        <AnimatedCounter />
+        <Suspense fallback={null}>
+          <AnimatedCounter />
+        </Suspense>
       </div>
     </>
   );
