@@ -10,8 +10,8 @@ const Instagram = lazy(() => import("lucide-react").then((mod) => ({ default: mo
 
 // Store components, not rendered elements
 const socialLinks = [
-  { name: "GitHub", url: "https://github.com/arspatel2", IconComponent: Github },
-  { name: "LinkedIn", url: "https://www.linkedin.com/in/arspatel", IconComponent: Linkedin },
+  { name: "GitHub", url: "https://github.com/ars-patel", IconComponent: Github },
+  { name: "LinkedIn", url: "https://linkedin.com/in/arskumar-patel-1395a12a3", IconComponent: Linkedin },
   { name: "Instagram", url: "https://www.instagram.com/arspatel2", IconComponent: Instagram },
 ];
 

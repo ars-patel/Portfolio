@@ -131,7 +131,7 @@ const Contact = () => {
 
             {/* 3D Visual Lazy Loaded */}
             <div className="xl:col-span-7 w-full min-h-[300px] md:min-h-[400px] lg:min-h-[500px]">
-              <div className="bg-[#cd7c2e] w-full h-full rounded-3xl overflow-hidden cursor-grab relative">
+              <div className="bg-[#cd7c2e] w-full h-full rounded-3xl overflow-hidden cursor-grab relative click">
                 <Suspense
                   fallback={
                     <div className="flex justify-center items-center h-full text-white">
