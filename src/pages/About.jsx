@@ -1,7 +1,24 @@
 "use client";
 import { motion } from "framer-motion";
-import { socialLinks } from "./../constant/store";
+import { Github, Linkedin, Instagram } from "lucide-react";
 const About = () => {
+  const socialLinks = [
+    {
+      name: "GitHub",
+      url: "https://github.com/arspatel2",
+      icon: <Github size={28} />,
+    },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/arspatel",
+      icon: <Linkedin size={28} />,
+    },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/arspatel2",
+      icon: <Instagram size={28} />,
+    },
+  ];
   return (
     <section id="about">
       <div className="min-h-screen bg-black text-white">

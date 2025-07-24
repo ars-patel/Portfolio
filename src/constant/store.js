@@ -1,5 +1,5 @@
 // data.js
-import { Github, Linkedin, Instagram, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import snap from "./../assets/snap.png"; // Optional default image
 import store from "./../assets/store.png"
 import head from "./../assets/headphone.png"
@@ -27,24 +27,6 @@ import {
   SiGithub,
   SiVercel,
 } from "react-icons/si";
-
-export const socialLinks = [
-  {
-    name: "GitHub",
-    url: "https://github.com/ars-patel",
-    Icon: Github,
-  },
-  {
-    name: "LinkedIn",
-    url: "https://linkedin.com/in/arskumar-patel-1395a12a3",
-    Icon: Linkedin,
-  },
-  {
-    name: "Instagram",
-    url: "https://instagram.com/arspatel2",
-    Icon: Instagram,
-  },
-];
 
 export const counterItems = [
   { value: 15, suffix: "+", label: "Projects Completed" },
