@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
-import Particles from "./../components/Particles";
 import { Canvas } from "@react-three/fiber";
 import { skills } from "./../constant/store";
+
+// Lazy load Particles component
+const Particles = lazy(() => import("../components/Particles"));
 
 const Skills = () => {
   return (
@@ -15,13 +17,14 @@ const Skills = () => {
       {/* Background Particles */}
       <div className="absolute inset-0 z-0">
         <Canvas>
-          <Particles count={200} />
+          <Suspense fallback={null}>
+            <Particles count={200} />
+          </Suspense>
         </Canvas>
       </div>
 
       {/* Foreground Content */}
       <div className="relative z-10 max-w-6xl w-full px-6">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,7 +40,6 @@ const Skills = () => {
           </h1>
         </motion.div>
 
-        {/* Skills Grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

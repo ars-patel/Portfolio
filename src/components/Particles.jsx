@@ -4,22 +4,26 @@ import { useFrame } from "@react-three/fiber";
 const Particles = ({ count = 200 }) => {
   const mesh = useRef();
 
-  const particles = useMemo(() => {
+  const [particles, positions] = useMemo(() => {
     const temp = [];
+    const posArray = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      temp.push({
-        position: [
-          (Math.random() - 0.5) * 10,
-          Math.random() * 10 + 5, // higher starting point
-          (Math.random() - 0.5) * 10,
-        ],
-        speed: 0.005 + Math.random() * 0.001,
-      });
+      const pos = [
+        (Math.random() - 0.5) * 10,
+        Math.random() * 10 + 5,
+        (Math.random() - 0.5) * 10,
+      ];
+      temp.push({ position: pos, speed: 0.005 + Math.random() * 0.001 });
+
+      posArray[i * 3] = pos[0];
+      posArray[i * 3 + 1] = pos[1];
+      posArray[i * 3 + 2] = pos[2];
     }
-    return temp;
+    return [temp, posArray];
   }, [count]);
 
   useFrame(() => {
+    if (!mesh.current) return;
     const positions = mesh.current.geometry.attributes.position.array;
     for (let i = 0; i < count; i++) {
       let y = positions[i * 3 + 1];
@@ -30,19 +34,12 @@ const Particles = ({ count = 200 }) => {
     mesh.current.geometry.attributes.position.needsUpdate = true;
   });
 
-  const positions = new Float32Array(count * 3);
-  particles.forEach((p, i) => {
-    positions[i * 3] = p.position[0];
-    positions[i * 3 + 1] = p.position[1];
-    positions[i * 3 + 2] = p.position[2];
-  });
-
   return (
-    <points ref={mesh}>
+    <points ref={mesh} position={[0, 0, 0]}>
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={count}
+          count={positions.length / 3}
           array={positions}
           itemSize={3}
         />
