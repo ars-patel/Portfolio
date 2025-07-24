@@ -57,6 +57,8 @@ export const roles = [
   "Full-Stack Developer",
   "Frontend Developer",
   "Backend Developer",
+  "ReactJs Expert",
+  "API Backend Engineer"
 ];
 
 export const projects = [
