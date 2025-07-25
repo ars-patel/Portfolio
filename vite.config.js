@@ -12,6 +12,6 @@ export default defineConfig({
     },
   },
   build: {
-    sourcemap: true, // ✅ Add this line to enable source maps in production
+    sourcemap: true,
   },
 });
