@@ -1,7 +1,7 @@
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 
-const Particles = ({ count = 150 }) => {
+const Particles = ({ count = 200 }) => {
   const mesh = useRef();
 
   const [particles, positions] = useMemo(() => {
@@ -13,7 +13,7 @@ const Particles = ({ count = 150 }) => {
         Math.random() * 10 + 5,
         (Math.random() - 0.5) * 10,
       ];
-      temp.push({ position: pos, speed: 0.005 + Math.random() * 0.001 });
+      temp.push({ position: pos, speed: 0.001 + Math.random() * 0.001 });
 
       posArray[i * 3] = pos[0];
       posArray[i * 3 + 1] = pos[1];
