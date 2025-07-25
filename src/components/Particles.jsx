@@ -13,7 +13,7 @@ const Particles = ({ count = 200 }) => {
         Math.random() * 10 + 5,
         (Math.random() - 0.5) * 10,
       ];
-      temp.push({ position: pos, speed: 0.001 + Math.random() * 0.001 });
+      temp.push({ position: pos, speed: 0.003 + Math.random() * 0.001 });
 
       posArray[i * 3] = pos[0];
       posArray[i * 3 + 1] = pos[1];

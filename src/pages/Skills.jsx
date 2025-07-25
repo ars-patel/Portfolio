@@ -18,7 +18,7 @@ const Skills = () => {
       <div className="absolute inset-0 z-0">
         <Canvas>
           <Suspense fallback={null}>
-            <Particles count={0} />
+            <Particles count={100} />
           </Suspense>
         </Canvas>
       </div>
