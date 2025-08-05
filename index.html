@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,12 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- ✅ Meta Description for SEO and Lighthouse -->
-    <meta name="description" content="Ars Patel's personal portfolio showcasing skills, projects, and experience in full-stack web development." />
+    <meta
+      name="description"
+      content="Ars Patel's personal portfolio showcasing skills, projects, and experience in full-stack web development."
+    />
 
     <title>Ars Patel</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-YVCV0CLRZK"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-YVCV0CLRZK");
+    </script>
   </body>
 </html>
