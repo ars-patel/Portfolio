@@ -115,7 +115,7 @@ const Hero = () => {
               </div>
             </a>
             <a
-              href="https://res.cloudinary.com/db8pzpi7i/image/upload/v1754469227/arspatel_llwi9h.pdf"
+              href="https://res.cloudinary.com/db8pzpi7i/image/upload/v1754469858/arspatel_ua0jun.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 border border-purple-500 hover:bg-purple-600 hover:text-white text-purple-400 text-sm sm:text-base rounded-lg transition duration-300"
