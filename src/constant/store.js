@@ -28,6 +28,8 @@ import {
   SiVercel,
 } from "react-icons/si";
 
+import { FiServer } from "react-icons/fi";
+
 export const counterItems = [
   { value: 15, suffix: "+", label: "Projects Completed" },
   { value: 2, suffix: "+", label: "Years Learning" },
@@ -117,4 +119,5 @@ export const skills = [
   { name: "Git", icon: SiGit, color: "bg-red-500", textColor: "text-white" },
   { name: "GitHub", icon: SiGithub, color: "bg-gray-900", textColor: "text-white" },
   { name: "Vercel", icon: SiVercel, color: "bg-black border border-white", textColor: "text-white" },
+  { name: "Render", icon: FiServer, color: "bg-indigo-700", textColor: "text-white" },
 ];
